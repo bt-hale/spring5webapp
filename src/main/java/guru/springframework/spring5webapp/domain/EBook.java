@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class EBook {
@@ -20,6 +21,9 @@ public class EBook {
 	
 	private String title;
 	private String isbn;
+	
+	@ManyToOne
+	private Publisher publisher;
 	
 	@ManyToMany
 	@JoinTable(name ="author_book", joinColumns = @JoinColumn(name = "book_id"), 
@@ -60,6 +64,14 @@ public class EBook {
 	public void setId(long id) {
 		this.id = id;
 	}
+	
+	
+	public Publisher getPublisher() {
+		return publisher;
+	}
+	public void setPublisher(Publisher publisher) {
+		this.publisher = publisher;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -82,7 +94,7 @@ public class EBook {
 	}
 	@Override
 	public String toString() {
-		return "EBook [id=" + id + ", title=" + title + ", isbn=" + isbn + ", authors=" + authors + "]";
+		return "EBook [id=" + id + ", title=" + title + ", isbn=" + isbn + "]";
 	}
 	
 	
