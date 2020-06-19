@@ -3,7 +3,6 @@ package guru.springframework.spring5webapp.bootstrap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import guru.springframework.spring5webapp.domain.Address;
 import guru.springframework.spring5webapp.domain.Author;
 import guru.springframework.spring5webapp.domain.EBook;
 import guru.springframework.spring5webapp.domain.Publisher;
@@ -51,8 +50,7 @@ public class BootStrapData implements CommandLineRunner {
 		System.out.println("Bootstrap Startup");
 		System.out.println("number of books = " + bookRepository.count());
 		
-		Address address = new Address("123 Main", "Dallas", "TX", "75123");
-		Publisher pub = new Publisher("Book Publishers, Inc", address);
+		Publisher pub = new Publisher("Book Publishers, Inc", "123 Main", "Dallas", "TX", "75123");
 		
 		publisherRepository.save(pub);
 		System.out.println("number of authors = " + authorRepository.count());
